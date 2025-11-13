@@ -1,20 +1,35 @@
 export interface ProductUpdate {
   id: string;
-  date: string;
-  product: string;
-  version: string;
-  updateType: 'Feature' | 'Bug Fix' | 'Improvement' | 'Security';
-  description: string;
-  impactedUsers: number;
+  feature: string;
+  status: 'Done' | 'Pending';
+  priority: 'High' | 'Medium' | 'Low';
+  date: string; // ISO date format
 }
 
 export interface UserInteraction {
   id: string;
-  timestamp: string;
-  userId: string;
-  userName: string;
-  action: 'View' | 'Click' | 'Download' | 'Share' | 'Comment';
-  productUpdate: string;
-  duration: number; // in seconds
-  device: 'Desktop' | 'Mobile' | 'Tablet';
+  question: string;
+  answer: string;
+  feature: string;
+  featureStatus: 'Done' | 'Pending';
+}
+
+export type SortDirection = 'asc' | 'desc' | null;
+
+export interface SortConfig<T> {
+  key: keyof T;
+  direction: SortDirection;
+}
+
+export interface Stat {
+  id: string;
+  label: string;
+  value: string | number;
+  source: string;
+}
+
+export interface InfoCard {
+  id: string;
+  title: string;
+  content: string;
 }
